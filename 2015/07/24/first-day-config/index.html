@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>first day config | Baidonghui</title>
+  <meta name="author" content="baidonghui">
+  
+  <meta name="description" content="baidonghui">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="first day config"/>
+  <meta property="og:site_name" content="Baidonghui"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Baidonghui" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="/js/jquery.min.js"></script>
+  
+
+</head>
+
+
+<body>
+  <!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0027_Simplified Chinese.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Baidonghui</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="http://user.qzone.qq.com/709233593">Qzone</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-07-24T14:09:41.000Z"><a href="/2015/07/24/first-day-config/">2015-07-24</a></time>
+      
+      
+  
+    <h1 class="title">first day config</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天完成了BLOG的基本配置，总结一下<br><a id="more"></a></p>
+<h2 id="下载安装">下载安装</h2><p><a href="http://www.git-scm.com/download/" target="_blank" rel="external">GIT</a><br><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a></p>
+<h2 id="新建博客所在文件夹">新建博客所在文件夹</h2><p>可以将任意文件夹作为Blog文件夹，如（E:\MyBlog），并在此文件夹下点击右键选择Gitbash，键入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>现在已经搭建好本地的hexo博客了，继续键入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>即可通过浏览器在localhost:4000中查看</p>
+<h2 id="注册GIT_HUB">注册GIT HUB</h2><p>注册账号，创建repository（如baidonghui/baidonghui.github.io）</p>
+<h2 id="配置SSH_keys">配置SSH keys</h2><p>键入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>如果提示No such file or directory，则需要生成新的SSH KEY</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 邮箱地址</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/your_user_directory/.ssh/id_rsa):&lt;回车就好&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="添加SSH_到_GITHUB">添加SSH 到 GITHUB</h2><p>1、打开本地C:\Documents and Settings\Administrator.ssh\id_rsa.pub文件。此文件里面内容为刚才生成人密钥。如果看不到这个文件，你需要设置显示隐藏文件。准确的复制这个文件的内容，才能保证设置的成功。<br>2、登陆github系统。点击右上角的 Account Settings—-&gt;SSH Public keys —-&gt; add another public keys<br>3、把你本地生成的密钥复制到里面（key文本框中）， 点击 add key 就ok了</p>
+<p>可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<h2 id="设置用户信息">设置用户信息</h2><p>现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。<br>Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是GitHub的昵称。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name 用户名</span><br><span class="line">$ git config --global user.email  邮箱</span><br></pre></td></tr></table></figure></p>
+<h2 id="新博客">新博客</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"title"</span></span><br></pre></td></tr></table></figure>
+<p>编辑文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="参考">参考</h2><p><a href="https://github.com/hexojs/hexo/wiki/themes" target="_blank" rel="external">主题</a><br><a href="http://zipperary.com/categories/hexo/" target="_blank" rel="external">参考</a><br><a href="http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer>
+      
+
+        
+        
+          <div class="alignright post-nav">
+            <em>下一篇: </em><a href="/2015/07/24/hello-world/">Hello World</a>
+          </div>
+          <div class="clearfix"></div>
+        
+
+        
+          <div class="copyright">
+            
+              <span class="claim">版权声明：保持署名-自由转载-非商用-无演绎</span>
+            
+            
+              <span class="from-link">
+                <em>本文链接地址:</em>
+                <a href="/2015/07/24/first-day-config/">
+                  http://baidonghui.github.io/2015/07/24/first-day-config/
+                </a>
+              </span>
+            
+          </div>
+        
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+    
+    
+      <a class="addthis_button_sinaweibo_like"></a>
+    
+    
+    
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="text" name="q" results="0" placeholder="搜一下">
+    <i class="icon-search"></i>
+    <input type="hidden" name="q" value="site:baidonghui.github.io">
+  </form>
+</div>
+
+  <div class="widget tag">
+<ul class="entry">
+<li>小白</li>
+<li>燕山大学在读研究生</li>
+</ul>
+</div>
+
+
+
+  
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/07/24/first-day-config/">first day config</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/24/hello-world/">Hello World</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <div id="go-pg-top"><i class="icon-arrow-up"></i></div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 baidonghui
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/page.js"></script>
+
+</body>
+
+</html>
