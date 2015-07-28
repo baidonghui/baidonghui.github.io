@@ -7,7 +7,7 @@
     <title>JAVA-CODE-SortedArrayX | xiaobai&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="baidonghui">
+    <meta name="author" content="xiaobai">
     
 
     
@@ -22,8 +22,6 @@
 <meta name="twitter:title" content="JAVA-CODE-SortedArrayX">
 <meta name="twitter:description" content="这是一个有序数组的封装，正是因为数组是有序的，使用二分查找方法比普通数组的查找效率提升了，但执行插入操作时，要保持数组的有序性，因此需要查找插入的位置，后部的元素需要依次复制为新元素让出空间。">
 
-    
-    <link rel="alternative" href="/atom.xml" title="xiaobai&#39;s blog" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -42,7 +40,7 @@
 		
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="xiaobai&#39;s blog">xiaobai&#39;s blog</a></h1>
-				<h2 class="blog-motto">有花堪折直须折，莫待无花空折枝</h2>
+				<h2 class="blog-motto">◆◆◆◆ 花堪折直须折，莫待无花空折枝</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
@@ -80,7 +78,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="/about" title="baidonghui" target="_blank" itemprop="author">baidonghui</a>
+		<a href="/about" title="xiaobai" target="_blank" itemprop="author">xiaobai</a>
 		
   <p class="article-time">
     <time datetime="2015-07-24T15:17:58.000Z" itemprop="datePublished"> 发表于 2015-07-24</time>
@@ -101,6 +99,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SortedArrayX array = <span class="keyword">new</span> SortedArrayX(<span class="number">5</span>);</span><br><span class="line"><span class="keyword">assert</span>(array.isEmpty());</span><br><span class="line">array.display();        </span><br><span class="line">array.insert(<span class="number">1</span>);</span><br><span class="line">array.display();        </span><br><span class="line"><span class="keyword">assert</span>(!array.isEmpty());</span><br><span class="line">array.insert(<span class="number">4</span>);</span><br><span class="line">array.insert(<span class="number">13</span>);</span><br><span class="line">array.insert(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">assert</span>(!array.isFull());</span><br><span class="line">array.insert(<span class="number">25</span>);</span><br><span class="line"><span class="keyword">assert</span>(array.isFull());</span><br><span class="line">array.display();        </span><br><span class="line"><span class="keyword">assert</span>(array.insert(<span class="number">12</span>) == -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">assert</span>(array.find(<span class="number">25</span>) == <span class="number">4</span>);</span><br><span class="line"><span class="keyword">assert</span>(array.find(<span class="number">12</span>) == -<span class="number">1</span>);        </span><br><span class="line"><span class="keyword">assert</span>(array.delete(<span class="number">12</span>) == -<span class="number">1</span>);</span><br><span class="line"><span class="keyword">assert</span>(array.delete(<span class="number">4</span>) == <span class="number">4</span>);</span><br><span class="line">array.display();        </span><br><span class="line"><span class="keyword">assert</span>(array.find(<span class="number">25</span>) == <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
   
 	</div>
+		<div align="center">
+<p>本文地址 转载保链</p>
+<a href="/2015/07/24/JAVA-CODE-SortedArrayX/"> http://xiaobaidonghui.cn/2015/07/24/JAVA-CODE-SortedArrayX/ </a>
+</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
@@ -223,6 +225,15 @@
 </div>
 
 
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/TouPlus/" style="font-size: 10px;">TouPlus</a> <a href="/tags/多说/" style="font-size: 10px;">多说</a> <a href="/tags/数据结构和算法/" style="font-size: 20px;">数据结构和算法</a> <a href="/tags/无聊瞎玩/" style="font-size: 10px;">无聊瞎玩</a>
+    </div>
+  </div>
+
+
   <div class="linkslist">
   <p class="asidetitle">友情链接</p>
     <ul>
@@ -234,13 +245,6 @@
           </li>
         
     </ul>
-</div>
-
-  
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -277,7 +281,7 @@
 		<p class="copyright">
 		<a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme based on <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
 		
-		<a href="/about" target="_blank" title="baidonghui">baidonghui</a>
+		<a href="/about" target="_blank" title="xiaobai">xiaobai</a>
 		
 
 		<!-- xiaobai move Analytics Begin -->
