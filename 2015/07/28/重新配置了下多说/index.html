@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/index.html">
 <meta property="og:site_name" content="xiaobai's blog">
 <meta property="og:description" content="关于yilia主题Jul 23, 2015多说配置的一些理解">
-<meta property="og:updated_time" content="2015-07-28T09:32:46.764Z">
+<meta property="og:updated_time" content="2015-07-30T01:35:32.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yilia主题多说的重新配置">
 <meta name="twitter:description" content="关于yilia主题Jul 23, 2015多说配置的一些理解">
@@ -40,7 +40,7 @@
 		
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/" title="xiaobai&#39;s blog">xiaobai&#39;s blog</a></h1>
-				<h2 class="blog-motto">◆◆◆◆ 花堪折直须折，莫待无花空折枝</h2>
+				<h2 class="blog-motto">◆◆◆◆ 有花堪折直须折，莫待无花空折枝</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
@@ -103,12 +103,14 @@
 <h2 id="测试与解决">测试与解决</h2><p>马上留言测试，发现自己的多说后台中并没有已通过的留言记录，不对，一定不是这样的。</p>
 <p>我们拉到评论的最下方，<strong>True’s ME正在使用多说</strong>，这是为什么呢。本着无聊的精神，去官方找开发文档，发现了<a href="http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9" target="_blank" rel="external">Hexo使用多说教程</a>，教程中首先提到了在<code>_config.yml</code>中添加多说的<code>short_name</code>，咦好像没有啊，这是什么地方用到的，接着往下找，然后修改<code>article.ejs</code>模板，中间有一句</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">'&lt;%= config.duoshuo_shortname %&gt;'</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>于是打开了<code>article.ejs</code>文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; theme.duoshuo &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">%-</span> <span class="attribute">partial</span>('<span class="attribute">post</span>/<span class="attribute">duoshuo</span>', &#123;</span><br><span class="line">    <span class="attribute">key:</span> <span class="attribute">post.slug</span>,</span><br><span class="line">    <span class="attribute">title:</span> <span class="attribute">post.title</span>,</span><br><span class="line">    <span class="attribute">url:</span> <span class="attribute">config.url</span>+<span class="attribute">url_for</span>(<span class="attribute">post.path</span>)</span><br><span class="line">  &#125;) %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span> &#125; %&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>于是打开了<code>article.ejs</code>文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; theme.duoshuo &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">%-</span> <span class="attribute">partial</span>('<span class="attribute">post</span>/<span class="attribute">duoshuo</span>', &#123;</span><br><span class="line">    <span class="attribute">key:</span> <span class="attribute">post.slug</span>,</span><br><span class="line">    <span class="attribute">title:</span> <span class="attribute">post.title</span>,</span><br><span class="line">    <span class="attribute">url:</span> <span class="attribute">config.url</span>+<span class="attribute">url_for</span>(<span class="attribute">post.path</span>)</span><br><span class="line">  &#125;) %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span> &#125; %&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>链接到了另一个文件，打开<code>themes/yilia/layout/_partial/post/duoshuo.ejs</code>，注意第7行。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"duoshuo"</span>&gt;</span><br><span class="line">	<span class="xml"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-thread-key</span>=<span class="value">"&lt;%=key%&gt;"</span> <span class="attribute">data-title</span>=<span class="value">"&lt;%=title%&gt;"</span> <span class="attribute">data-url</span>=<span class="value">"&lt;%=url%&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">	<span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"&lt;%=theme.duoshuo%&gt;"</span>&#125;;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> ds = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">		ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</span><br><span class="line">		ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span><br><span class="line">		ds.charset = <span class="string">'UTF-8'</span>;</span><br><span class="line">		(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] </span><br><span class="line">		 || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);</span><br><span class="line">	&#125;)();</span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>诶，就是这了，这里的查询串为<code>theme.duoshuo</code>，而不是<code>short_name</code>。原因就在此，默认文档有评论而且显示<strong>True’s ME正在使用多说</strong> 正是因为</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"true"</span>&#125;;</span><br></pre></td></tr></table></figure>
 <p>于是大家知道怎么改了吧，直接改查询串，或者在<code>theme/_config.yml</code>中增加相应的变量，确保值的正确。</p>
+<p>当然，上文提到的是主题中的引用值，这是建立在已经在<a href="http://duoshuo.com/" target="_blank" rel="external">多说网站</a>注册账号并添加后台之后的，在多说后台的设置中查看自己的多说二级域名，shrot_name的值就是这个二级域名去掉.duoshuo.com的部分。</p>
   
 	</div>
 		<div align="center">
@@ -291,6 +293,11 @@
 		<!-- xiaobai move Analytics Begin -->
 		
 
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F21cc75ad42b167b5f6d075588bf1304f' type='text/javascript'%3E%3C/script%3E"));
+</script>
 
 
 
