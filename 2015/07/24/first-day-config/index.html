@@ -203,7 +203,7 @@
 		  
 		
 		  
-			<li><a href="/categories/数据结构和算法/" title="数据结构和算法">数据结构和算法<sup>2</sup></a></li>
+			<li><a href="/categories/数据结构和算法/" title="数据结构和算法">数据结构和算法<sup>3</sup></a></li>
 		  
 		
 		  
@@ -224,11 +224,11 @@
 			
 		
 			
-				<li><a href="/tags/数据结构和算法/" title="数据结构和算法">数据结构和算法<sup>2</sup></a></li>
+				<li><a href="/tags/数据结构和算法/" title="数据结构和算法">数据结构和算法<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/JAVA/" title="JAVA">JAVA<sup>2</sup></a></li>
+				<li><a href="/tags/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
 			
 		
 			
@@ -243,6 +243,15 @@
 </div>
 
 
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+  	<!--
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+    -->
+    <iframe width="100%" height="100" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=9&isTitle=0&noborder=1&isWeibo=0&isFans=0&uid=2943876937&verifier=f079b235&dpc=1"></iframe>
+</div>
+
+
   <div id="weather" style="margin-top: 0px;">
 	<p class="asidetitle">天气</p>
 	<iframe allowtransparency="true" frameborder="0" width="235" height="98" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=2&z=1&t=1&v=0&d=1&bd=0&k=&f=817c7c&q=1&e=1&a=1&c=54511&w=255&h=98&align=center"></iframe>
@@ -252,7 +261,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/TouPlus/" style="font-size: 10px;">TouPlus</a> <a href="/tags/建站日志/" style="font-size: 20px;">建站日志</a> <a href="/tags/数据结构和算法/" style="font-size: 15px;">数据结构和算法</a> <a href="/tags/无聊瞎玩/" style="font-size: 10px;">无聊瞎玩</a>
+       <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/TouPlus/" style="font-size: 10px;">TouPlus</a> <a href="/tags/建站日志/" style="font-size: 20px;">建站日志</a> <a href="/tags/数据结构和算法/" style="font-size: 20px;">数据结构和算法</a> <a href="/tags/无聊瞎玩/" style="font-size: 10px;">无聊瞎玩</a>
     </div>
   </div>
 
@@ -287,6 +296,8 @@
 	</section>
 	 
 	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2943876937" target="_blank" class="icon-weibo" title="微博"></a>
 		
 		
 		
@@ -510,6 +521,35 @@ $(document).ready(function(){
 
 <!-- MathJax Begin -->
 <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <!-- MathJax End -->
