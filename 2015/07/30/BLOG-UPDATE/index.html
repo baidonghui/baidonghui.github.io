@@ -4,23 +4,62 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>yilia主题多说的重新配置 | xiaobai&#39;s blog</title>
+    <title>BLOG UPDATE | xiaobai&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="baidonghui">
     
 
     
-    <meta name="description" content="关于yilia主题Jul 23, 2015多说配置的一些理解">
+    <meta name="description" content="blog update 20150802
+
+为转载提供两种文本(MarkDown/HTML)
+增加GoogleAd
+修改站内搜索
+
+blog update 20150730
+
+增加CNZZ/百度统计
+增加About页面
+增加404公益页面
+增加针对文章的原创标识，并显示转载保链
+增加针对文章的评论开启与关闭功能
+增加天气模块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yilia主题多说的重新配置">
-<meta property="og:url" content="http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/index.html">
+<meta property="og:title" content="BLOG UPDATE">
+<meta property="og:url" content="http://xiaobaidonghui.cn/2015/07/30/BLOG-UPDATE/index.html">
 <meta property="og:site_name" content="xiaobai's blog">
-<meta property="og:description" content="关于yilia主题Jul 23, 2015多说配置的一些理解">
-<meta property="og:updated_time" content="2015-07-30T10:29:20.446Z">
+<meta property="og:description" content="blog update 20150802
+
+为转载提供两种文本(MarkDown/HTML)
+增加GoogleAd
+修改站内搜索
+
+blog update 20150730
+
+增加CNZZ/百度统计
+增加About页面
+增加404公益页面
+增加针对文章的原创标识，并显示转载保链
+增加针对文章的评论开启与关闭功能
+增加天气模块">
+<meta property="og:updated_time" content="2015-08-02T11:25:33.362Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yilia主题多说的重新配置">
-<meta name="twitter:description" content="关于yilia主题Jul 23, 2015多说配置的一些理解">
+<meta name="twitter:title" content="BLOG UPDATE">
+<meta name="twitter:description" content="blog update 20150802
+
+为转载提供两种文本(MarkDown/HTML)
+增加GoogleAd
+修改站内搜索
+
+blog update 20150730
+
+增加CNZZ/百度统计
+增加About页面
+增加404公益页面
+增加针对文章的原创标识，并显示转载保链
+增加针对文章的评论开启与关闭功能
+增加天气模块">
 
     
     
@@ -79,14 +118,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/07/28/重新配置了下多说/" title="yilia主题多说的重新配置" itemprop="url">yilia主题多说的重新配置</a>
+      <a href="/2015/07/30/BLOG-UPDATE/" title="BLOG UPDATE" itemprop="url">BLOG UPDATE</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="baidonghui" target="_blank" itemprop="author">baidonghui</a>
 		
   <p class="article-time">
-    <time datetime="2015-07-28T01:36:00.000Z" itemprop="datePublished"> 发表于 2015-07-28</time>
+    <time datetime="2015-07-30T03:08:20.000Z" itemprop="datePublished"> 发表于 2015-07-30</time>
     
   </p>
 </header>
@@ -95,27 +134,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#发现"><span class="toc-number">1.</span> <span class="toc-text">发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试与解决"><span class="toc-number">2.</span> <span class="toc-text">测试与解决</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>关于<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">yilia主题</a><code>Jul 23, 2015</code>多说配置的一些理解<a id="more"></a>，如果本文对你帮助，可以在下方留言~</p>
-<h2 id="发现">发现</h2><p>刚刚重新配置了下的多说评论插件，开始以为已经配置成功了，然而<strong>并没有</strong>。</p>
-<p>开始进去自带的博客“Hello Wolrd”时，发现下方已经有一堆评论，一阵欢喜，然而，其实这就代表着插件没有配置成功，这并不是像某些人说的那样</p>
-<blockquote>
-<p>测试的博文带了这么多评论也是刁刁的</p>
-</blockquote>
-<h2 id="测试与解决">测试与解决</h2><p>马上留言测试，发现自己的多说后台中并没有已通过的留言记录，不对，一定不是这样的。</p>
-<p>我们拉到评论的最下方，<strong>True’s ME正在使用多说</strong>，这是为什么呢。本着无聊的精神，去官方找开发文档，发现了<a href="http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9" target="_blank" rel="external">Hexo使用多说教程</a>，教程中首先提到了在<code>_config.yml</code>中添加多说的<code>short_name</code>，咦好像没有啊，这是什么地方用到的，接着往下找，然后修改<code>article.ejs</code>模板，中间有一句</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">'&lt;%= config.duoshuo_shortname %&gt;'</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>于是打开了<code>article.ejs</code>文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; theme.duoshuo &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">%-</span> <span class="attribute">partial</span>('<span class="attribute">post</span>/<span class="attribute">duoshuo</span>', &#123;</span><br><span class="line">    <span class="attribute">key:</span> <span class="attribute">post.slug</span>,</span><br><span class="line">    <span class="attribute">title:</span> <span class="attribute">post.title</span>,</span><br><span class="line">    <span class="attribute">url:</span> <span class="attribute">config.url</span>+<span class="attribute">url_for</span>(<span class="attribute">post.path</span>)</span><br><span class="line">  &#125;) %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">%</span> &#125; %&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>链接到了另一个文件，打开<code>themes/yilia/layout/_partial/post/duoshuo.ejs</code>，注意第7行。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"duoshuo"</span>&gt;</span><br><span class="line">	<span class="xml"><span class="comment">&lt;!-- 多说评论框 start --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-thread-key</span>=<span class="value">"&lt;%=key%&gt;"</span> <span class="attribute">data-title</span>=<span class="value">"&lt;%=title%&gt;"</span> <span class="attribute">data-url</span>=<span class="value">"&lt;%=url%&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">	<span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"&lt;%=theme.duoshuo%&gt;"</span>&#125;;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> ds = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">		ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;</span><br><span class="line">		ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span><br><span class="line">		ds.charset = <span class="string">'UTF-8'</span>;</span><br><span class="line">		(<span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] </span><br><span class="line">		 || <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);</span><br><span class="line">	&#125;)();</span><br><span class="line">	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>诶，就是这了，这里的查询串为<code>theme.duoshuo</code>，而不是<code>short_name</code>。原因就在此，默认文档有评论而且显示<strong>True’s ME正在使用多说</strong> 正是因为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> duoshuoQuery = &#123;short_name:<span class="string">"true"</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>于是大家知道怎么改了吧，直接改查询串，或者在<code>theme/_config.yml</code>中增加相应的变量，确保值的正确。</p>
-<p>当然，上文提到的是主题中的引用值，这是建立在已经在<a href="http://duoshuo.com/" target="_blank" rel="external">多说网站</a>注册账号并添加后台之后的，在多说后台的设置中查看自己的多说二级域名，shrot_name的值就是这个二级域名去掉.duoshuo.com的部分。</p>
+		<p>blog update 20150802</p>
+<ol>
+<li>为转载提供两种文本(MarkDown/HTML)</li>
+<li>增加GoogleAd</li>
+<li>修改站内搜索</li>
+</ol>
+<p>blog update 20150730</p>
+<ol>
+<li>增加CNZZ/百度统计</li>
+<li>增加About页面</li>
+<li>增加404公益页面</li>
+<li>增加针对文章的原创标识，并显示转载保链</li>
+<li>增加针对文章的评论开启与关闭功能</li>
+<li>增加天气模块</li>
+</ol>
   
 	</div>
 		
@@ -123,7 +160,7 @@
 	<div id="declare" align="center">	
 		<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
 		<a style="a:hover {  color: #C00;  text-decoration: underline;}">原创文章 转载保链</a>
-	  	<table width="80%"><tbody><tr><td><pre><span>MarkDown </span><br><span>HTML </span><br></pre></td><td><pre><textarea rows="1" cols="120">[yilia主题多说的重新配置](http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/)</textarea><br><textarea rows="1" cols="120"><a href="http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/">yilia主题多说的重新配置</a></textarea><br></pre></td></tr></tbody></table>
+	  	<table width="80%"><tbody><tr><td><pre><span>MarkDown </span><br><span>HTML </span><br></pre></td><td><pre><textarea rows="1" cols="120">[BLOG UPDATE](http://xiaobaidonghui.cn/2015/07/30/BLOG-UPDATE/)</textarea><br><textarea rows="1" cols="120"><a href="http://xiaobaidonghui.cn/2015/07/30/BLOG-UPDATE/">BLOG UPDATE</a></textarea><br></pre></td></tr></tbody></table>
 	  	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
 	 </div>
 
@@ -150,7 +187,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/" data-title="yilia主题多说的重新配置 | xiaobai&#39;s blog" data-tsina="null" class="share clearfix">
+	  <div data-url="http://xiaobaidonghui.cn/2015/07/30/BLOG-UPDATE/" data-title="BLOG UPDATE | xiaobai&#39;s blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -164,18 +201,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2015/07/30/BLOG-UPDATE/" title="BLOG UPDATE">
+ <a href="/2015/07/31/JAVA数据结构和算法笔记1/" title="JAVA数据结构和算法笔记（一）">
   <strong>上一篇：</strong><br/>
   <span>
-  BLOG UPDATE</span>
+  JAVA数据结构和算法笔记（一）</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2015/07/27/To-tou-plus/"  title="To Tou Plus">
+<a href="/2015/07/28/重新配置了下多说/"  title="yilia主题多说的重新配置">
  <strong>下一篇：</strong><br/> 
- <span>To Tou Plus
+ <span>yilia主题多说的重新配置
 </span>
 </a>
 </div>
@@ -185,7 +222,7 @@
 	
 	
 	<section id="comments" class="comment">
-		<div class="ds-thread" data-thread-key="2015/07/28/重新配置了下多说/" data-title="yilia主题多说的重新配置" data-url="http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/"></div>
+		<div class="ds-thread" data-thread-key="2015/07/30/BLOG-UPDATE/" data-title="BLOG UPDATE" data-url="http://xiaobaidonghui.cn/2015/07/30/BLOG-UPDATE/"></div>
 	</section>
 	
 	
@@ -196,7 +233,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#发现"><span class="toc-number">1.</span> <span class="toc-text">发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试与解决"><span class="toc-number">2.</span> <span class="toc-text">测试与解决</span></a></li></ol>
+ 
  
   </div>
 
