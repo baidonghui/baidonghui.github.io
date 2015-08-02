@@ -57,13 +57,16 @@
 						<li><a href="/about">About</a></li>
 					
 					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:xiaobaidonghui.cn">
+
+					<!-- xiaobai add google search 20150802-->
+					<form class="search" action="http://www.google.com" id="cse-search-box" target="_blank">
+					  <div>
+					    <input type="hidden" name="cx" value="partner-pub-6192802206776787:2346500753" />
+					    <input type="hidden" name="ie" value="UTF-8" />
+					    <input type="text" name="q" value="站内搜索" size="55" />
+					  </div>
 					</form>
-					
+					<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
 					</li>
 				</ul>
 			</nav>			

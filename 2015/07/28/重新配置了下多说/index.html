@@ -58,13 +58,16 @@
 						<li><a href="/about">About</a></li>
 					
 					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:xiaobaidonghui.cn">
+
+					<!-- xiaobai add google search 20150802-->
+					<form class="search" action="http://www.google.com" id="cse-search-box" target="_blank">
+					  <div>
+					    <input type="hidden" name="cx" value="partner-pub-6192802206776787:2346500753" />
+					    <input type="hidden" name="ie" value="UTF-8" />
+					    <input type="text" name="q" value="站内搜索" size="55" />
+					  </div>
 					</form>
-					
+					<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
 					</li>
 				</ul>
 			</nav>			
@@ -117,9 +120,13 @@
   
 	</div>
 		
-	<div align="center">
-	<a style="a:hover {  color: #C00;  text-decoration: underline;}">原创文章 转载留言保链：http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/ </a>
-	</div>
+	<!-- xiaobai add 原创标记 20150802 -->
+	<div id="declare" align="center">	
+		<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+		<a style="a:hover {  color: #C00;  text-decoration: underline;}">原创文章 转载保链</a>
+	  	<table width="80%"><tbody><tr><td><pre><span>MarkDown </span><br><span>HTML </span><br></pre></td><td><pre><textarea rows="1" cols="120">[yilia主题多说的重新配置](http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/)</textarea><br><textarea rows="1" cols="120"><a href="http://xiaobaidonghui.cn/2015/07/28/重新配置了下多说/">yilia主题多说的重新配置</a></textarea><br></pre></td></tr></tbody></table>
+	  	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+	 </div>
 
 
 
@@ -258,6 +265,7 @@
 
 
   <div id="weather" style="margin-top: 0px;">
+	<!-- xiaobai add 2345 weather 20150730 -->
 	<p class="asidetitle">天气</p>
 	<iframe allowtransparency="true" frameborder="0" width="235" height="98" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=2&z=1&t=1&v=0&d=1&bd=0&k=&f=817c7c&q=1&e=1&a=1&c=54511&w=255&h=98&align=center"></iframe>
 </div>
@@ -282,6 +290,19 @@
           </li>
         
     </ul>
+</div>
+
+  <div style="margin-top: 0px; height="200">
+	<!-- xiaobai add google ad 20150802 -->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-6192802206776787"
+	     data-ad-slot="9677964350"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
 </div>
 
 </aside>
