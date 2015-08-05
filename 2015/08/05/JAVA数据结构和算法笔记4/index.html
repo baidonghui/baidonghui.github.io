@@ -1,0 +1,605 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>JAVA数据结构和算法笔记（四） | xiaobai&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="baidonghui">
+    
+
+    
+    <meta name="description" content="JAVA数据结构和算法的学习笔记。（哈希表与堆）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA数据结构和算法笔记（四）">
+<meta property="og:url" content="http://xiaobaidonghui.cn/2015/08/05/JAVA数据结构和算法笔记4/index.html">
+<meta property="og:site_name" content="xiaobai's blog">
+<meta property="og:description" content="JAVA数据结构和算法的学习笔记。（哈希表与堆）">
+<meta property="og:image" content="http://i3.tietuku.com/0e981efd53b25204s.jpg">
+<meta property="og:updated_time" content="2015-08-05T03:21:36.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA数据结构和算法笔记（四）">
+<meta name="twitter:description" content="JAVA数据结构和算法的学习笔记。（哈希表与堆）">
+
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="xiaobai&#39;s blog">xiaobai&#39;s blog</a></h1>
+				<h2 class="blog-motto">◆◆◆◆ 有花堪折直须折，莫待无花空折枝</h2>
+			</div>
+
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="http://user.qzone.qq.com/709233593">Qzone</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+
+					<!-- xiaobai add google search 20150802-->
+					<form class="search" action="http://www.google.com" id="cse-search-box" target="_blank">
+					  <div>
+					    <input type="hidden" name="cx" value="partner-pub-6192802206776787:2346500753" />
+					    <input type="hidden" name="ie" value="UTF-8" />
+					    <input type="text" name="q" placeholder="站内搜索" size="55" />
+					  </div>
+					</form>
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/05/JAVA数据结构和算法笔记4/" title="JAVA数据结构和算法笔记（四）" itemprop="url">JAVA数据结构和算法笔记（四）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="baidonghui" target="_blank" itemprop="author">baidonghui</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-05T03:19:08.000Z" itemprop="datePublished"> 发表于 2015-08-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#哈希表"><span class="toc-number">1.</span> <span class="toc-text">哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.1.</span> <span class="toc-text">栗子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决冲突"><span class="toc-number">1.2.</span> <span class="toc-text">解决冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#哈希函数"><span class="toc-number">1.3.</span> <span class="toc-text">哈希函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.4.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">1.5.</span> <span class="toc-text">应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优先级队列"><span class="toc-number">2.</span> <span class="toc-text">优先级队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除"><span class="toc-number">2.1.</span> <span class="toc-text">删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入"><span class="toc-number">2.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆排序"><span class="toc-number">2.3.</span> <span class="toc-text">堆排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性质"><span class="toc-number">2.4.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>JAVA数据结构和算法的学习笔记。（哈希表与堆）<br><a id="more"></a></p>
+<h1 id="哈希表">哈希表</h1><p>哈希表是根据关键码值（key）而直接进行访问的数据结构，哈希表的内部是用数组实现的，通常情况下关键字的取值范围大于数组的容量，存储数据的关键是如何将数据存入数组。</p>
+<p>假设关键码值为key，数组的下标用index表示，则$index = Hash(key)$。哈希函数即是将key映射成存储有value的数组下标，并且每次传入相同的key，哈希函数都可以返回相同的index。</p>
+<h2 id="栗子">栗子</h2><blockquote>
+<p>我们知道，《新华字典》是按照读音排序的，可以理解为一个以读音为key，按升序排列的数据库。对于读音已知的字，可以通过“二分查找法”，很快地查找到要找的字，其时间复杂度为$O(log_{2}n)$。但是，对于不知道读音的字怎么办呢？如果使用“顺序查找”，一页一页地翻字典，假设一本新华字典600页，每翻查一页的时间开销为0.5分钟，那么，每查到一个字耗费的时间t的数学期望值$E(t) = 600 * 0.5min / 2 = 150min$，也就是查一个字需要两个半小时！当然，这是难以接受的！<br>为了解决这个问题，《新华字典》的编辑们，很快就想出了解决办法，那就是在字典的前面加入一个“检字表”，如“四角号码检字表”“部首检字表”等，其特点是以每个字的字形为依据，计算出一个索引值，并映射到对应的页数。比如“法”字，按四角号码检字法，其索引值为3413，再根据这个数值，就可以找到相应的字了。在这种情况下，查找算法的时间复杂度接近于$O(1)$。换句话说，字典再厚，也不会明显地影响到查字典的效率了。</p>
+</blockquote>
+<p>现在假设一个数组长度为5，我们要保存联系人的信息，用名字作为key，经过哈希函数映射后的结果为</p>
+<p><img src="http://i3.tietuku.com/0e981efd53b25204s.jpg" alt="What is a HashTable Data Struc"></p>
+<p>由哈希函数计算的数组下标可能会有重复，如果要存储数据的空间已经存在数据，则称为<strong>冲突</strong>。</p>
+<h2 id="解决冲突">解决冲突</h2><p>冲突可以用两种方法解决：开放地址法和链地址法。</p>
+<p>对于开放地址法，可以分为线性探测、二次探测和再哈希法。假设产生冲突的下标为index：线性探测依次探测数组中的$index+1, index+2, index+3, \ldots $，直到找到空白单元将数据保存进去。二次探测则是依次探测数组中的$index+1^2, index+2^2, index+3^2, \ldots $，直到找到空白单元将数据保存进去。再哈希法是先将关键字用经过另一个哈希函数计算结果作为探测的步长，假设$step = Hash2(key)$，则依次探测数组中的$index+1 \times step, index+2 \times step, index+3 \times step, \ldots $，直到找到空白单元将数据保存进去。</p>
+<p>在哈希表中，一串连续的已填充单元叫做填充序列，当填充序列变得越来越长时产生的现象叫做聚集。线性探测和二次探测都容易发生聚集现象，分别成为原始聚集和二次聚集，产生聚集的原因是发生冲突后，探测的步长是一致的。而再哈希法中的步长是对关键字进行哈希化求得的，因此选取优良的再哈希函数可以有效的减小聚集现象。显然当数组填充的越满，聚集也就越可能发生。</p>
+<p>对于链地址法是在数组中的每个元素中维护一个链表，数据项仍然映射到同一个单元时，将所有映射到这个单元的数据都加入到链表中，从而避免了冲突。</p>
+<h2 id="哈希函数">哈希函数</h2><p>哈希函数要求能够快速计算，哈希表的主要有点就是速度，如果哈希函数运行的很慢则会拖慢哈希表的存取速度。</p>
+<p>直接寻址法：取关键字或关键字的某个线性函数值为哈希地址。<br>数字分析法：找出数字的规律，尽可能利用这些数据来构造冲突几率较低的哈希地址。<br>平方取中法：先求出关键字的平方值，然后按需要取平方值的中间极为作为哈希地址。<br>折叠法：将关键字分割成位数相同的几部分，最后一部分位数可以不同，然后取这几部分的叠加和（去除进位）作为哈希地址。<br>余数法：用关键字对表长取余所得余数为哈希地址。</p>
+<h2 id="性能">性能</h2><p>哈希表的装填因子定义为：填入表中的元素个数 / 散列表的长度<br>找到一个特定项所需要经过的步数叫做探测长度。</p>
+<p>开放地址法中的最大填充因子应该在0.5附近，当装填因子接近1时，查找时间趋于无限。<br>连地址法中的装填因子为1比较合适，链地址法的探测长度随着装填因子的增大而线性增大。</p>
+<p>哈希表的容量通常是一个质数。</p>
+<h2 id="应用">应用</h2><p>校验文件HASH MD5<br>校验重复提交的信息</p>
+<h1 id="优先级队列">优先级队列</h1><p>优先级队列是一种抽象数据结构，可以用于任务调度，它提供了删除最大（或最小）关键字数据项的方法，插入数据项的方法。</p>
+<p>优先级队列可以使用有序数组实现，删除时取出最后一个元素，插入时依次比较赋值，寻找合适的位置插入。这样的实现方法删除复杂度为$O(1)$，插入的时间则需要$O(n)$。</p>
+<p>优先级队列还可以使用一种特殊的二叉树——堆来实现：</p>
+<ul>
+<li>堆常用一个数组实现。（堆只是概念上的表示，存储器中的表示是数组。）</li>
+<li>堆是完全二叉树。（在数组中表示为没有洞。）</li>
+<li>堆中每一个节点的关键字都大于等于子节点关键字。（堆相对于搜索二叉树而言是弱序的。）</li>
+</ul>
+<h2 id="删除">删除</h2><p>首先移走根，把最后一个节点移动到根的位置， 一直向下筛选这个节点，直到它的子节点都小于这个节点，数组容量减一。</p>
+<h2 id="插入">插入</h2><p>首先插入到数组空白部分的第一个单元，数组容量加一，依次向上筛选这个节点，直到它的双亲节点大于等于这个节点。</p>
+<h2 id="堆排序">堆排序</h2><p>堆排序的基本思想是使用普通的<code>insert()</code>函数在堆中插入无序的数据项，然后反复调用<code>extract()</code>，就可以按序移出所有的数据项。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.xiaobaidonghui.heap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Heap</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 保存数据的数组</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">int</span>[] array;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 数组中最后一个存有数据的索引</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">int</span> last;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 初始化数组大小</span><br><span class="line">     * <span class="doctag">@param</span> size</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Heap</span><span class="params">(<span class="keyword">int</span> size)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        array = <span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line">        last = -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 初始化数组大小，并构建堆</span><br><span class="line">     * <span class="doctag">@param</span> data</span><br><span class="line">     * <span class="doctag">@param</span> size</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Heap</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> size)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(size);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> d : data)</span><br><span class="line">        &#123;</span><br><span class="line">            insert(d);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (last == -<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (last == array.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> key)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">/* 首先插入到数组空白部分的第一个单元，数组容量加一 */</span></span><br><span class="line">        <span class="keyword">int</span> currentIndex = ++last;</span><br><span class="line">        array[currentIndex] = key;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 依次向上筛选这个节点 */</span></span><br><span class="line">        <span class="keyword">int</span> parent;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            parent = getParent(currentIndex);</span><br><span class="line">            <span class="keyword">if</span> (parent == -<span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 没有双亲节点了 */</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (array[parent] &lt; key)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 双亲节点比自己小，替换 */</span></span><br><span class="line">                array[currentIndex] = array[parent];</span><br><span class="line">                currentIndex = parent;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 双亲节点大于等于这个节点 */</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 收尾赋值 */</span></span><br><span class="line">        array[currentIndex] = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">extract</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">/* 首先移走根 */</span></span><br><span class="line">        <span class="keyword">int</span> rtn = array[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 把最后一个节点移动到根的位置 */</span></span><br><span class="line">        array[<span class="number">0</span>] = array[last--];</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 一直向下筛选这个节点，直到它的子节点都小于这个节点 */</span></span><br><span class="line">        <span class="keyword">int</span> temp = array[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> currentIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> l = getLargerChild(currentIndex);</span><br><span class="line">            <span class="keyword">if</span> (l == -<span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (array[l] &gt; temp)</span><br><span class="line">            &#123;</span><br><span class="line">                array[currentIndex] = array[l];</span><br><span class="line">                currentIndex = l;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 收尾赋值 */</span></span><br><span class="line">        array[currentIndex] = temp;</span><br><span class="line">        <span class="keyword">return</span> rtn;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 返回较大的子节点的索引值</span><br><span class="line">     * <span class="doctag">@param</span> index</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLargerChild</span><span class="params">(<span class="keyword">int</span> index)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> lc = getlChild(index);</span><br><span class="line">        <span class="keyword">int</span> rc = getrChild(index);</span><br><span class="line">        <span class="keyword">if</span> (lc == -<span class="number">1</span>) <span class="comment">// 没有左子节点一定没有右子节点</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (rc == -<span class="number">1</span>) <span class="comment">// 没有右子节点，有左子节点</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> lc;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="comment">// if(rc != -1) //有右子节点，一定有左子节点</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> (array[lc] &gt; array[rc]) ? lc : rc;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取节点的双亲节点索引</span><br><span class="line">     * <span class="doctag">@param</span> index 子节点的索引</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getParent</span><span class="params">(<span class="keyword">int</span> index)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> (index + <span class="number">1</span>) / <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取节点的左子节点索引</span><br><span class="line">     * <span class="doctag">@param</span> index</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getlChild</span><span class="params">(<span class="keyword">int</span> index)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rtn = (index + <span class="number">1</span>) * <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (rtn &gt; last)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> rtn;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取节点的右子节点索引</span><br><span class="line">     * <span class="doctag">@param</span> index</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getrChild</span><span class="params">(<span class="keyword">int</span> index)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> rtn = (index + <span class="number">1</span>) * <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (rtn &gt; last)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> rtn;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= last; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.print(array[i] + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> args</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">/* 建立空堆并操作 */</span></span><br><span class="line">        Heap h = <span class="keyword">new</span> Heap(<span class="number">5</span>);</span><br><span class="line">        h.print();</span><br><span class="line">        <span class="keyword">assert</span> (h.isEmpty());</span><br><span class="line">        h.insert(<span class="number">3</span>);</span><br><span class="line">        h.insert(<span class="number">8</span>);</span><br><span class="line">        h.insert(<span class="number">5</span>);</span><br><span class="line">        h.insert(<span class="number">6</span>);</span><br><span class="line">        h.insert(<span class="number">4</span>);</span><br><span class="line">        <span class="keyword">assert</span> (h.isFull());</span><br><span class="line">        h.print();</span><br><span class="line">        h.extract();</span><br><span class="line">        h.print();</span><br><span class="line">        h.extract();</span><br><span class="line">        h.print();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 构建堆并操作 */</span></span><br><span class="line">        Heap h2 = <span class="keyword">new</span> Heap(<span class="keyword">new</span> <span class="keyword">int</span>[] &#123; <span class="number">90</span>, <span class="number">19</span>, <span class="number">36</span>, <span class="number">17</span>, <span class="number">3</span>, <span class="number">25</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">7</span> &#125;, <span class="number">30</span>);</span><br><span class="line">        h2.print();</span><br><span class="line">        <span class="keyword">assert</span> (h2.isEmpty());</span><br><span class="line">        h2.extract();</span><br><span class="line">        h2.print();</span><br><span class="line">        h2.extract();</span><br><span class="line">        h2.print();</span><br><span class="line">        h2.extract();</span><br><span class="line">        h2.print();</span><br><span class="line">        h2.extract();</span><br><span class="line">        h2.print();</span><br><span class="line">        h2.insert(<span class="number">20</span>);</span><br><span class="line">        h2.print();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 堆排序 */</span></span><br><span class="line">        Heap h3 = <span class="keyword">new</span> Heap(<span class="number">29</span>);</span><br><span class="line">        <span class="keyword">int</span>[] unsorted = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">11</span>, <span class="number">88</span>, <span class="number">3</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unsorted.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            h3.insert(unsorted[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; unsorted.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.print(h3.extract() + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="性质">性质</h2><p>由于堆的弱序性，向搜索二叉树那样有序的遍历所有的数据，不能找到特定关键字数据项的位置，不能移除特定关键字的数据项。<br>堆中每个节点的关键字都小于它的双亲节点，大于它的子节点。<br>向上筛选和向下筛选都可以看作是一系列的交换，但更有效的做法是进行一系列的复制。（因为一次交换扽同于三次复制<code>t = i; i = j; j = t;</code>）。<br>可以更改数据项的优先级，如果增大就向上筛选，如果减小就向下筛选。<br>堆排序的复杂度为$O(N \minus logN)$<br>堆的实现可以用二叉树，这种堆称为树堆。</p>
+<h2 id="参考">参考</h2><ol>
+<li><a href="http://www.amazon.com/Data-Structures-Algorithms-Java-Edition/dp/0672324539" target="_blank" rel="external">Data Structures &amp; Algortithms in Java</a></li>
+<li><a href="http://visualgo.net" target="_blank" rel="external">visualgo.net</a></li>
+<li><a href="http://www.valleytalk.org/2010/03/02/%e9%97%b2%e8%81%8a%e5%93%88%e5%b8%8c%e8%a1%a8-%ef%bc%88%e4%b8%8a%ef%bc%89/" target="_blank" rel="external">闲聊哈希表 （上）</a></li>
+<li><a href="http://www.youtube.com/watch?v=MfhjkfocRR0" target="_blank" rel="external">What is a HashTable Data Structure</a></li>
+</ol>
+  
+	</div>
+		
+	<!-- xiaobai add 原创标记 20150802 -->
+	<div id="declare" align="center">	
+		<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+		<a style="a:hover {  color: #C00;  text-decoration: underline;}">原创文章 转载保链</a>
+	  	<table width="80%"><tbody><tr><td><pre><span>MarkDown </span><br><span>HTML </span><br></pre></td><td><pre><textarea rows="1" cols="120">[JAVA数据结构和算法笔记（四）](http://xiaobaidonghui.cn/2015/08/05/JAVA数据结构和算法笔记4/)</textarea><br><textarea rows="1" cols="120"><a href="http://xiaobaidonghui.cn/2015/08/05/JAVA数据结构和算法笔记4/">JAVA数据结构和算法笔记（四）</a></textarea><br></pre></td></tr></tbody></table>
+	  	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+	 </div>
+
+
+
+
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/数据结构和算法/">数据结构和算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/JAVA/">JAVA</a><a href="/tags/数据结构和算法/">数据结构和算法</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://xiaobaidonghui.cn/2015/08/05/JAVA数据结构和算法笔记4/" data-title="JAVA数据结构和算法笔记（四） | xiaobai&#39;s blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/08/03/JAVA数据结构和算法笔记3/"  title="JAVA数据结构和算法笔记（三）">
+ <strong>下一篇：</strong><br/> 
+ <span>JAVA数据结构和算法笔记（三）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+	
+	<section id="comments" class="comment">
+		<div class="ds-thread" data-thread-key="2015/08/05/JAVA数据结构和算法笔记4/" data-title="JAVA数据结构和算法笔记（四）" data-url="http://xiaobaidonghui.cn/2015/08/05/JAVA数据结构和算法笔记4/"></div>
+	</section>
+	
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#哈希表"><span class="toc-number">1.</span> <span class="toc-text">哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子"><span class="toc-number">1.1.</span> <span class="toc-text">栗子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决冲突"><span class="toc-number">1.2.</span> <span class="toc-text">解决冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#哈希函数"><span class="toc-number">1.3.</span> <span class="toc-text">哈希函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.4.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">1.5.</span> <span class="toc-text">应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优先级队列"><span class="toc-number">2.</span> <span class="toc-text">优先级队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除"><span class="toc-number">2.1.</span> <span class="toc-text">删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入"><span class="toc-number">2.2.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆排序"><span class="toc-number">2.3.</span> <span class="toc-text">堆排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性质"><span class="toc-number">2.4.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">2.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/好听的英文歌/" title="好听的英文歌">好听的英文歌<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/建站日志/" title="建站日志">建站日志<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据结构和算法/" title="数据结构和算法">数据结构和算法<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/无聊瞎玩/" title="无聊瞎玩">无聊瞎玩<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/数据结构和算法/" title="数据结构和算法">数据结构和算法<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JAVA/" title="JAVA">JAVA<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/建站日志/" title="建站日志">建站日志<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/无聊瞎玩/" title="无聊瞎玩">无聊瞎玩<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/TouPlus/" title="TouPlus">TouPlus<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/好听的英文歌/" title="好听的英文歌">好听的英文歌<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+  	<!--
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+    -->
+    <iframe width="100%" height="100" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=9&isTitle=0&noborder=1&isWeibo=0&isFans=0&uid=2943876937&verifier=f079b235&dpc=1"></iframe>
+</div>
+
+
+  <div id="weather" style="margin-top: 0px;">
+	<!-- xiaobai add 2345 weather 20150730 -->
+	<p class="asidetitle">天气</p>
+	<iframe allowtransparency="true" frameborder="0" width="235" height="98" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=2&z=1&t=1&v=0&d=1&bd=0&k=&f=817c7c&q=1&e=1&a=1&c=54511&w=255&h=98&align=center"></iframe>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/TouPlus/" style="font-size: 10px;">TouPlus</a> <a href="/tags/好听的英文歌/" style="font-size: 10px;">好听的英文歌</a> <a href="/tags/建站日志/" style="font-size: 15px;">建站日志</a> <a href="/tags/数据结构和算法/" style="font-size: 20px;">数据结构和算法</a> <a href="/tags/无聊瞎玩/" style="font-size: 10px;">无聊瞎玩</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://littleji.com" target="_blank" title="小季的博客">小季的博客</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <div align="center" style="margin-top: 0px;">
+	<!-- xiaobai add google ad 20150802 -->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-6192802206776787"
+	     data-ad-slot="9677964350"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+</div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m littlebai in YSU. <br/>
+			This is my blog, believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2943876937" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/baidonghui" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		<a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme based on <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="baidonghui">baidonghui</a>
+		
+
+		<!-- xiaobai move Analytics Begin -->
+		
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F21cc75ad42b167b5f6d075588bf1304f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255885461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255885461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+		<!-- Analytics End -->
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"20150727"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin moved to footer by xiaobai -->
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+  </body>
+</html>
