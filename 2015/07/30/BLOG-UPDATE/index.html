@@ -1,13 +1,11 @@
 <!-- 跳转到ES -->
 <script>
 var pageurl = window.top.location.href;
-
-console.info(pageurl);
-console.info(decodeURI(decodeURI(pageurl)));
-
 if(String(pageurl).indexOf("/es") == -1)
 {
-    window.location.href="http://xiaobaidonghui.cn/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
+    //window.location.href="http://xiaobaidonghui.cn/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
+
+    window.location.href="http://localhost:4000/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
 }
 </script>
 <!-- 跳转到ES END -->
@@ -106,11 +104,7 @@ blog update 20150730
 					
 						<li><a href="/archives">Archives</a></li>
 					
-						<li><a href="/es">ES</a></li>
-					
 						<li><a href="/UploadPics">UploadPics</a></li>
-					
-						<li><a href="http://user.qzone.qq.com/709233593">Qzone</a></li>
 					
 						<li><a href="/about">About</a></li>
 					
