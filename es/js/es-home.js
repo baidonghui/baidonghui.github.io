@@ -12,5 +12,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$('a[rel*=leanModal]').leanModal({top: 200,closeButton: ".modal_close"});
+	$('a[rel*=leanModal]').leanModal({
+		top: 200,
+		closeButton: ".modal_close"
+	});
 });

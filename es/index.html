@@ -7,79 +7,39 @@
 		<meta charset="utf-8">
 		<title>ES HOME</title>
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="http://es.littleji.com/Site/js/kickstart.js"></script>
-		<script src="http://es.littleji.com/Site/js/jquery.leanModal.min.js"></script>
-		<link rel="stylesheet" href="/css/home.css" media="all">
-		<script src="js/home.js"></script>
+		<link rel="stylesheet" href="css/home.css" media="all">
+		<script src="js/es-homenav.js"></script>
+		<script src="js/es-home.js"></script>
+		<script src="js/es-custom-home.js"></script>
+		<script type="text/javascript" src="http://www.99lime.com/site/templates/js/kickstart.js"></script>
+		<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+		<script>
+			function AddFavorite(sURL, sTitle) {
+				try {
+					window.external.addFavorite(sURL, sTitle);
+				} catch (e) {
+					try {
+						window.sidebar.addPanel(sTitle, sURL, "");
+					} catch (e) {
+						alert("请同时按下键盘的 Ctrl 和 D 进行添加");
+					}
+				}
+			}
+		</script>
 	</head>
 
 	<body style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;">
-		<nav class="navbar">
-			<ul class="menu">
-				<li><a href="#"><span>E</span>S</a></li>
-				<li class="current" esvaule="https://www.baidu.com"><a>百度</a></li>
-
-				<li esvaule="https://duliziyou.com/"><a>谷歌</a></li>
-
-				<li><a>燕大</a>
-					<ul>
-						<li esvaule="http://www.ysu.edu.cn"><a>燕大首页</a></li>
-						<li esvaule="http://202.206.245.231/default2.aspx"><a>本科生教务系统</a></li>
-						<li esvaule="http://202.206.245.111/"><a>研究生教务系统</a></li>
-						<li esvaule="http://yit.ysu.edu.cn/dmtfw/dszb/CCTV1.htm"><a>校园直播</a></li>
-					</ul>
-				</li>
-
-				<li><a>视频</a>
-					<ul>
-						<li esvaule="http://www.iqiyi.com/"><a>爱奇艺</a></li>
-						<li esvaule="http://www.youku.com/"><a>优酷</a></li>
-						<li esvaule="http://www.tudou.com/"><a>土豆</a></li>
-						<li esvaule="http://www.letv.com/"><a>乐视</a></li>
-						<li esvaule="http://www.bilibili.tv/"><a>哔哩哔哩</a></li>
-					</ul>
-				</li>
-
-				<li><a>公开课</a>
-					<ul>
-						<li esvaule="https://www.edx.org/"><a>edX</a></li>
-						<li esvaule="https://www.coursera.org/"><a>Coursera</a></li>
-						<li esvaule="http://ocw.mit.edu/index.htm"><a>MIT Open Courseware</a></li>
-						<li esvaule="http://oyc.yale.edu/"><a>Open Yale Courses</a></li>
-						<li esvaule="http://online.stanford.edu/"><a>Stanford Online</a></li>
-						<li esvaule="https://www.khanacademy.org/"><a>Khan Academy</a></li>
-						<li esvaule="http://open.163.com/"><a>网易公开课</a></li>
-						<li esvaule="http://mooc.guokr.com/"><a>MOOC学院</a></li>
-						<li esvaule="http://www.jikexueyuan.com/"><a>极客学院</a></li>
-					</ul>
-				</li>
-
-				<li><a>购物</a>
-					<ul>
-						<li esopenvaule="http://i.83jie.com/weixin?url=http%3A%2F%2Ftemai.taobao.com%3Fpid%3Dmm_34619426_10544719_34746681"><a>淘宝特卖</a></li>
-						<li esopenvaule="http://i.83jie.com/weixin?url=http%3A%2F%2Fs.click.taobao.com%2FJVTYq1y%3Fpid%3Dmm_34619426_10544719_34746681"><a>天猫</a></li>
-						<li esopenvaule="http://i.83jie.com/weixin?url=http%3A%2F%2Fs.click.taobao.com%2FZQscq1y%3Fpid%3Dmm_34619426_10544719_34746681"><a>聚划算</a></li>
-						<li esopenvaule="http://i.83jie.com/weixin?url=http%3A%2F%2Ftemai.taobao.com%2Fevent10323.htm%3Fpid%3Dmm_34619426_10544719_34746681"><a>9块9包邮</a></li>
-						<li esopenvaule="http://www.meituan.com/"><a>美团</a></li>
-						<li esopenvaule="http://www.jumei.com/"><a>聚美优品</a></li>
-						<li esopenvaule="http://www.vip.com"><a>唯品会</a></li>
-					</ul>
-				</li>
-
-				<li class="right"><a rel="leanModal" name="about" href="#about">About</a></li>
-			</ul>
-		</nav>
 		<div id="main">
+			<ul id="navmain" class="menu">
+				<li><a href="#"><span>ES</span> HOME</a></li>
+				<li class="right"><a href="#" onclick="AddFavorite(window.location,document.title)">收藏本站</a></li>
+				<li class="right"><a rel="leanModal" name="about" href="#about">关于</a></li>
+			</ul>
 			<div id="container" style="padding-left: 0;">
-				<iframe id="viewer" name="viewer" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true" style="background-color:#fff" src="https://www.baidu.com/"></iframe>
+				<iframe id="viewer" name="viewer" frameborder="0" marginwidth="0" marginheight="0" allowtransparency="true" style="background-color:#fff" src=""></iframe>
 			</div>
 		</div>
 
-		<!--
-	    	作者：709233593@qq.com
-	    	时间：2015-08-07
-	    	描述：About浮窗
-    	-->
 		<div id="about" style="display: none; position: fixed; opacity: 1; z-index: 11000; left: 50%; margin-left: -330px; top: 200px;">
 			<!-- Table -->
 			<table cellspacing="0" cellpadding="0" style="background-color: #FFFFE0; width: 450px;">
@@ -91,8 +51,8 @@
 					</tr>
 					<tr>
 						<th>Version</th>
-						<td>alpha</td>
-						<td>2010807</td>
+						<td>alpha_2</td>
+						<td>2010808</td>
 					</tr>
 					<tr>
 						<th>Powered by</th>
@@ -103,7 +63,7 @@
 			</table>
 		</div>
 		<div id="lean_overlay">
-			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255885461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255885461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255885461'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255885461%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 		</div>
 	</body>
 
