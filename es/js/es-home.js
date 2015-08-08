@@ -16,4 +16,6 @@ $(document).ready(function() {
 		top: 200,
 		closeButton: ".modal_close"
 	});
+
+	console.info("           ES           \n       做一个环保的人\n============================\nPowered by\nhttp://www.littleji.com\nhttp://www.xiaobaidonghui.cn\n\n In YanShan University 2015\n============================");
 });
