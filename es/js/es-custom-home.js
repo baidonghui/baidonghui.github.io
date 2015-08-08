@@ -1,7 +1,14 @@
 function GetQueryString(name) {
+	console.info(window.location);
+	console.info(decodeURI(window.location));
+
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 	var r = window.location.search.substr(1).match(reg);
-	if (r != null) return unescape(r[2]);
+
+
+	console.info(r);
+
+	if (r != null) return decodeURI(r[2]);
 	return "http://www.baidu.com";;
 }
 

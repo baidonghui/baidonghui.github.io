@@ -1,3 +1,17 @@
+<!-- 跳转到ES -->
+<script>
+var pageurl = window.top.location.href;
+
+console.info(pageurl);
+console.info(decodeURI(decodeURI(pageurl)));
+
+if(String(pageurl).indexOf("/es") == -1)
+{
+    window.location.href="http://xiaobaidonghui.cn/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
+}
+</script>
+<!-- 跳转到ES END -->
+
 
   
     <html><head><title></title></head>
