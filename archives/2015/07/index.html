@@ -1,14 +1,3 @@
-<!-- 跳转到ES -->
-<script>
-var pageurl = window.top.location.href;
-if(String(pageurl).indexOf("/es") == -1)
-{
-    window.location.href="http://xiaobaidonghui.cn/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
-
-    //window.location.href="http://localhost:4000/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
-}
-</script>
-<!-- 跳转到ES END -->
 
 
   <!DOCTYPE HTML>
@@ -90,7 +79,7 @@ if(String(pageurl).indexOf("/es") == -1)
   <h2 class="archive-icon">2015/7</h2>
   
   <div class="archiveslist archive-float clearfix">
-   <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015 年 08 月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">2015 年 07 月</a><span class="archive-list-count">5</span></li></ul>
+   <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">2015 年 08 月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">2015 年 07 月</a><span class="archive-list-count">5</span></li></ul>
  </div>
   
 </div>
@@ -363,5 +352,12 @@ $(document).ready(function(){
 
 
 <!-- MathJax End -->
+
+<!-- 侧边栏 xiaobai 20150819 -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#asideframe").load("/sideframe.html");
+  })
+</script>
     </body>
    </html>

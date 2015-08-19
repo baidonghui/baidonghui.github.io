@@ -1,14 +1,3 @@
-<!-- 跳转到ES -->
-<script>
-var pageurl = window.top.location.href;
-if(String(pageurl).indexOf("/es") == -1)
-{
-    window.location.href="http://xiaobaidonghui.cn/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
-
-    //window.location.href="http://localhost:4000/es/?url=" + encodeURI(decodeURI(decodeURI(pageurl)));
-}
-</script>
-<!-- 跳转到ES END -->
 
 
   <!DOCTYPE HTML>
@@ -307,5 +296,12 @@ $(document).ready(function(){
 
 
 <!-- MathJax End -->
+
+<!-- 侧边栏 xiaobai 20150819 -->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#asideframe").load("/sideframe.html");
+  })
+</script>
     </body>
    </html>
