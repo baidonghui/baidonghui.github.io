@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "C#中WebBrowser的一些记录"
-categories: C Sharp
+categories: C-Sharp
 tags:  C#
 ---
 

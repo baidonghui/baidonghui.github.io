@@ -2,7 +2,7 @@
 layout: post
 title:  "Eclipse安装反编译插件 jadclipse"
 categories: web
-tags:  jadclipse, eclipse
+tags:  jadclipse eclipse
 ---
 
 * content

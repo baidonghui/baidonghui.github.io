@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Cookie 与 Web Storage"
-categories: web-front
-tags:  web
+title:  "tomcat安装记录"
+categories: web
+tags:  web tomcat
 ---
 
 * content
